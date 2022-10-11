@@ -62,10 +62,11 @@ def generate_brand_hashtags(prompt: str) -> List[str]:
 
     # Extract output text.
     hashtags: str = response["choices"][0]["text"]
-    hashtags = hashtags.strip() # Strip white space.
+    hashtags = hashtags.strip("\n") # Strip white space.
     hashtags_arr = re.split(" ", hashtags)
 
     print(f"Hashtags: {hashtags_arr}")
     return hashtags_arr
 
-main()
+if __name__ == "__main__":
+    main()
