@@ -1,0 +1,2 @@
+# stract
+ Brand content generator.
