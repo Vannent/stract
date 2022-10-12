@@ -1,6 +1,6 @@
-from typing import Union
 from stract import generate_brand_content, generate_brand_hashtags
 from fastapi import FastAPI, HTTPException
+from mangum import Mangum
 
 app = FastAPI()
 MAX_INPUT_LENGTH = 32
@@ -29,7 +29,7 @@ def validate_input_length(prompt: str):
     if len(prompt) >= MAX_INPUT_LENGTH:
         raise HTTPException(
             status_code=400,
-            detail=f"Input length is too long. Must be under {MAX_INPUT_LENGTH} characters.",
+            detail=f"Input length is too long. Mut be under {MAX_INPUT_LENGTH} characters.",
         )
 
-# Command: /bin/python3 -m uvicorn stract_api:app --reload
+handler = Mangum(app, lifespan="off")

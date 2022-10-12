@@ -2,11 +2,11 @@ import os
 import re
 from typing import List
 import openai
-from dotenv import load_dotenv, find_dotenv
 import argparse
+from dotenv import load_dotenv, find_dotenv
 
-# Reusable Variables.
 MAX_INPUT_LENGTH = 32
+load_dotenv(find_dotenv())
 
 def main():
     parser = argparse.ArgumentParser()
@@ -19,7 +19,9 @@ def main():
         generate_brand_content(user_input)
         generate_brand_hashtags(user_input)
     else:
-        raise ValueError(f"Input length is too long. Must be under {MAX_INPUT_LENGTH}")
+        raise ValueError(
+            f"Input length is too long. Must be under{MAX_INPUT_LENGTH}"
+            )
 
 
 def validate_length(prompt: str) -> bool:
@@ -28,7 +30,6 @@ def validate_length(prompt: str) -> bool:
 
 def generate_brand_content(prompt: str) -> str:
     # Load Environmental Variables.
-    load_dotenv(find_dotenv())
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # Load API Content
@@ -51,7 +52,6 @@ def generate_brand_content(prompt: str) -> str:
 
 def generate_brand_hashtags(prompt: str) -> List[str]:
     # Load Environmental Variables.
-    load_dotenv(find_dotenv())
     openai.api_key = os.getenv("OPENAI_API_KEY")
 
     # Load API Content
