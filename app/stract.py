@@ -14,7 +14,6 @@ def main():
     args = parser.parse_args()
     user_input = args.input
 
-    print(f"User input: {user_input}")
     if validate_length(user_input):
         generate_brand_content(user_input)
         generate_brand_hashtags(user_input)
@@ -34,7 +33,6 @@ def generate_brand_content(prompt: str) -> str:
 
     # Load API Content
     prompt_sentence = f"Generate upbeat branding content for {prompt}: "
-    print(prompt_sentence)
 
     response = openai.Completion.create(engine="text-davinci-002", prompt=prompt_sentence, max_tokens=32)
 
@@ -45,8 +43,6 @@ def generate_brand_content(prompt: str) -> str:
     last_char = brand_text[-1]
     if last_char not in {".", "!", "?"}: # Add ... to truncated statements.
         brand_text += "..." 
-        
-    print(f"Snippet: {brand_text}")
     return brand_text
 
 
@@ -56,7 +52,6 @@ def generate_brand_hashtags(prompt: str) -> List[str]:
 
     # Load API Content
     prompt_sentence = f"Generate related branding hashtags for {prompt}: "
-    print(prompt_sentence)
 
     response = openai.Completion.create(engine="text-davinci-002", prompt=prompt_sentence, max_tokens=32)
 
@@ -65,7 +60,6 @@ def generate_brand_hashtags(prompt: str) -> List[str]:
     hashtags = hashtags.strip("\n") # Strip white space.
     hashtags_arr = re.split(" ", hashtags)
 
-    print(f"Hashtags: {hashtags_arr}")
     return hashtags_arr
 
 if __name__ == "__main__":
