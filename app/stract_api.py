@@ -1,9 +1,18 @@
 from stract import generate_brand_content, generate_brand_hashtags
 from fastapi import FastAPI, HTTPException
 from mangum import Mangum
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 MAX_INPUT_LENGTH = 32
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/generate_content")
 def generate_content_api(prompt: str):
@@ -18,8 +27,8 @@ def generate_hashtags_api(prompt: str):
     hashtags = generate_brand_hashtags(prompt)
     return {"content": None, "hashtags": hashtags}
 
-@app.get("/generate_snippet_and_keywords")
-async def generate_keywords_api(prompt: str):
+@app.get("/generate_all")
+def generate_all_api(prompt: str):
     validate_input_length(prompt)
     content = generate_brand_content(prompt)
     hashtags = generate_brand_hashtags(prompt)
