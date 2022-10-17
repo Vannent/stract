@@ -5,7 +5,7 @@
   from = "/*"
   to = "/index.html"
   status = 200
-    
+[[redirects]]
   from = "/_next/static/*"
   to = "/static/:splat"
   status = 301
