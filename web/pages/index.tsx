@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { stringify } from "querystring";
 import { useState } from "react";
 import { AgainIcon, BackIcon, PlayIcon } from "../components";
 import Header from "../components/Header";
@@ -205,8 +204,8 @@ const Home: NextPage = () => {
         <link rel="icon" href="/images/favicon.ico" type="image/x-icon" />
       </Head>
 
-      <main className="h-3/5 w-4/5 max-w-[730px] min-h-[400px] max-h-fit bg-[#F9FAF4] rounded-3xl flex items-center justify-center p-5">
-        <div className="md:w-2/4 md:min-w-[305px] w-full h-full flex flex-col gap-2 px-5">
+      <main className="h-3/5 w-4/5 max-w-[730px] min-h-[400px] max-h-[600px] bg-[#F9FAF4] rounded-3xl flex items-center justify-center p-5">
+        <div className="md:w-2/4 md:min-w-[305px] w-full h-full flex items-center justify-between flex-col gap-2 px-5">
           <Header />
           {results ? <Results /> : <Home />}
         </div>

@@ -4,7 +4,7 @@ import { GithubIcon } from ".";
 
 const Header = () => {
   return (
-    <div className="flex w-full h-12 justify-between items-center">
+    <div className="flex w-full h-1/5 justify-between items-center">
       <div className="font-semibold font-title text-3xl text-[#4A6163] cursor-default">
         <span className="">s</span>
         <span className="">t</span>
