@@ -7,8 +7,6 @@ dist/
 __pycache__/
 *.py[cod]
 *.zip
-
-*.js
 !jest.config.js
 *.d.ts
 node_modules
